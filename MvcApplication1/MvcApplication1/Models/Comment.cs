@@ -14,7 +14,6 @@ namespace MvcApplication1.Models
         public string author { get; set; }
         public string urlAuthor { get; set; }
         public string body { get; set; }
-        public Post post { get; set; }
     }
     public class CommentDBContext : DbContext
     {

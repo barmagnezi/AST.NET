@@ -56,7 +56,6 @@ namespace MvcApplication1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(post);
         }
 
@@ -91,33 +90,45 @@ namespace MvcApplication1.Controllers
         //comments
         public ActionResult Comments(long id = 0)
         {
-            Console.WriteLine("id" + id);
+            
+            Console.WriteLine("id:" + id);
             Post post = db.Posts.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
-            return View(post.comments.ToList());
+            var allComments = from m in db2.Comments
+                              select m;
+
+           allComments = allComments.Where(s => s.postId == id);
+            if (allComments==null)
+                return HttpNotFound();
+            return View(allComments); 
+            /*
+            List<Comment> comments = new List<Comment>();
+            string[] commentsArg=post.comments.Split('-');
+            if (commentsArg[0].Equals("comments"))
+            {
+                string[] idComments=commentsArg[1].Split(',');
+                foreach (var idcom in idComments)
+                {
+                    
+                }
+                return View(comments);
+            }
+            return HttpNotFound();*/
         }
 
         public ActionResult DeleteComment(long PostId = 0, long CommentId = 0)
         {
-            Post post = db.Posts.Find(PostId);
-
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
             Comment com = db2.Comments.Find(CommentId);
             if (com == null)
             {
                 return HttpNotFound();
             }
-            //post.comments.Remove(com);
-            //db2.Comments.Remove(com);
-            db.SaveChanges();
+            db2.Comments.Remove(com);
             db2.SaveChanges();
-            return View(post.comments.ToList());
+            return RedirectToAction("Index");
         }
         
         //
