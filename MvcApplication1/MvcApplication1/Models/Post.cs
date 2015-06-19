@@ -16,7 +16,8 @@ namespace MvcApplication1.Models
         public string body { get; set; }
         public string image { get; set; }
         public string video { get; set; }
-        public Comment[] comments { get; set; }
+
+        public string comments { get; set;}
     }
 
     public class PostDBContext : DbContext

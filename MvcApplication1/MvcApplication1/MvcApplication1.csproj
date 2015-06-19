@@ -196,9 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506191508109_bar.cs" />
-    <Compile Include="Migrations\201506191508109_bar.Designer.cs">
-      <DependentUpon>201506191508109_bar.cs</DependentUpon>
+    <Compile Include="Migrations\201506191633307_commentsToStirng.cs" />
+    <Compile Include="Migrations\201506191633307_commentsToStirng.Designer.cs">
+      <DependentUpon>201506191633307_commentsToStirng.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -344,8 +344,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506191508109_bar.resx">
-      <DependentUpon>201506191508109_bar.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506191633307_commentsToStirng.resx">
+      <DependentUpon>201506191633307_commentsToStirng.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

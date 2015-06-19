@@ -10,7 +10,6 @@ namespace MvcApplication1.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MvcApplication1.Models.PostDBContext";
         }
 
         protected override void Seed(MvcApplication1.Models.PostDBContext context)

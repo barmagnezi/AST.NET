@@ -51,6 +51,7 @@ namespace MvcApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.comments = "comments-";
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -90,12 +91,13 @@ namespace MvcApplication1.Controllers
         //comments
         public ActionResult Comments(long id = 0)
         {
+            Console.WriteLine("id" + id);
             Post post = db.Posts.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
-            return View(post.comments);
+            return View(post.comments.ToList());
         }
 
         public ActionResult DeleteComment(long PostId = 0, long CommentId = 0)
