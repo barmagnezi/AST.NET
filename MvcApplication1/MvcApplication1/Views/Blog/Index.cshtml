@@ -6,10 +6,72 @@
 
 <h2>Index</h2>
 
+
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+@foreach (var post in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@post.title</h2>
+                <p>Posted on (<time datetime="2009-06-29T23:31+01:00">@post.date</time>) by <a href=@post.urlAuthor>@post.author</a> - <a href="#comments">@post.comments.Count comments</a></p>
+            </header>
+            <div>
+                <p>
+                    @post.body
+                </p>
+
+                <img src=@post.image />
+
+                <video controls="controls">
+                    <source src=@post.video type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+        </article>
+    </section>
+    @foreach(var comment in post.comments){
+            	<section id="comments">
+			<h3>Comments</h3>
+				<article>
+					<header>
+						<a href=@comment.urlAuthor>@comment.author</a>
+					</header>
+					<p>@comment.body</p>
+				</article>
+			</section>
+    }
+    
+    		<form action="#" method="post">
+				<h3>Post a comment</h3>
+				<p>
+					<label for="name">Name</label>
+					<input name="name" id="name" type="text" required />
+				</p>
+				<p>
+					<label for="email">E-mail</label>
+					<input name="email" id="email" type="email" required />
+				</p>
+				<p>
+					<label for="website">Website</label>
+					<input name="website" id="website" type="url" />
+				</p>
+				<p>
+					<label for="comment">Comment</label>
+					<textarea name="comment" id="comment" required></textarea>
+				</p>
+				<p><input type="submit" value="Post comment" /></p>
+			</form>
+
+}
+    
+
+<!--
+    <table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -34,7 +96,9 @@
         </th>
         <th></th>
     </tr>
-
+-->
+    <!--
+        
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -67,3 +131,4 @@
 }
 
 </table>
+        -->
