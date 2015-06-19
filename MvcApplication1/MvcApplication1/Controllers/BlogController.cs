@@ -16,5 +16,19 @@ namespace MvcApplication1.Controllers
             return View(db.Posts);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.comments = "comments-";
+                
+                db.Posts.Add(post);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            
+        }
     }
 }

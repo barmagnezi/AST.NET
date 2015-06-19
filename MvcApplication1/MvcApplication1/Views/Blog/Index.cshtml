@@ -37,18 +37,18 @@
         </article>
     </section>
     foreach(var comment in post.comments){
-            	<section id="comments">
+           <section id="comments">
 			<h3>Comments</h3>
 				<article>
 					<header>
-						<a href=@comment.urlAuthor>@comment.author</a>
+						<a href=@comment.ToString().Split("SeniaIsTheMafiaKing")@comment.author</a>
 					</header>
 					<p>@comment.body</p>
 				</article>
 			</section>
     }
 
-        <form action=Html.ActionLink("Add", "AddComment", new { PostName = nam, PostEmail, = item.postId, PostWebsite= website, comment = commneet.text }) method="post">
+        <form action=Html.ActionLink("Add", "AddComment", @come, PostEmail, = item.postId, PostWebsite= website, comment = commneet.text }) method="post">
         <h3>Post a comment</h3>
         <p>
             <label for="name">Name</label>
