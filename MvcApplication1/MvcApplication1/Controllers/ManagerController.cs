@@ -111,11 +111,11 @@ namespace MvcApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            post.comments.Remove(com);
-            db2.Comments.Remove(com);
+            //post.comments.Remove(com);
+            //db2.Comments.Remove(com);
             db.SaveChanges();
             db2.SaveChanges();
-            return View(post.comments);
+            return View(post.comments.ToList());
         }
         
         //

@@ -13,8 +13,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Index()
         {
-
-            return View();
+            return View(db.Posts);
         }
 
     }
