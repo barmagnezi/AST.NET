@@ -17,7 +17,9 @@
         <article class="blogPost">
             <header>
                 <h2>@post.title</h2>
-                <p>Posted on (<time datetime="2009-06-29T23:31+01:00">@post.date</time>) by <a href=@post.urlAuthor>@post.author</a> - <a href="#comments">@post.comments.Count comments</a></p>
+                <p>Posted on (<time datetime="2009-06-29T23:31+01:00">@post.date</time>) 
+                by <a href=@post.urlAuthor>@post.author</a> 
+                - <a href="#Comments">@post.comments</a></p>
             </header>
             <div>
                 <p>
@@ -34,7 +36,7 @@
             </div>
         </article>
     </section>
-    @foreach(var comment in post.comments){
+    foreach(var comment in post.comments){
             	<section id="comments">
 			<h3>Comments</h3>
 				<article>
@@ -45,27 +47,28 @@
 				</article>
 			</section>
     }
-    
-    		<form action="#" method="post">
-				<h3>Post a comment</h3>
-				<p>
-					<label for="name">Name</label>
-					<input name="name" id="name" type="text" required />
-				</p>
-				<p>
-					<label for="email">E-mail</label>
-					<input name="email" id="email" type="email" required />
-				</p>
-				<p>
-					<label for="website">Website</label>
-					<input name="website" id="website" type="url" />
-				</p>
-				<p>
-					<label for="comment">Comment</label>
-					<textarea name="comment" id="comment" required></textarea>
-				</p>
-				<p><input type="submit" value="Post comment" /></p>
-			</form>
+
+        <form action=Html.ActionLink("Add", "AddComment", new { PostName = nam, PostEmail, = item.postId, PostWebsite= website, comment = commneet.text }) method="post">
+        <h3>Post a comment</h3>
+        <p>
+            <label for="name">Name</label>
+            <input name="name" id="name" type="text" required />
+        </p>
+        <p>
+            <label for="email">E-mail</label>
+            <input name="email" id="email" type="email" required />
+        </p>
+        <p>
+            <label for="website">Website</label>
+            <input name="website" id="website" type="url" />
+        </p>
+        <p>
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" required></textarea>
+        </p>
+        <p><input type="submit" value="Post comment" /></p>
+    </form>
+
 
 }
     
