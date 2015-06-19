@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MvcApplication1.Models.Comment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<h2>Comments</h2>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>author</td>
+        <td>title</td>
+        <td>body</td>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.id</td>
+        <td>@item.author</td>
+        <td>@item.title</td>
+        <td>@item.body</td>
+        <td> 
+            @Html.ActionLink("Delete", "DeleteComment", new {CommentId=item.id, PostId=item.postId  })
+        </td>
+    </tr>
+}
+
+</table>

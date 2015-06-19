@@ -2,44 +2,129 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>Ha-Blog Shel Shauli</title>
+        <link rel="stylesheet" href="~/Content/Site.css" type="text/css" media="screen" />
+        <link href="~/Content/Mycss/rss.css" rel="stylesheet" />
+        <!--פונט חיצוני עבור האתר-->
+        <style>
+
+        font-face {
+           font-family: myFirstFont;
+           src: url(sansation_light.woff);
+        }
+
+        div {
+           font-family: myFirstFont;
+        }
+        </style>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
+          <header>   
+                <!--added shadow in the title-->
+                <h1 style="text-shadow:#DDDDDD 3px 3px">Ha-Blog Shel Shauli</h1>
+         </header>
+        <nav>
+            <!-- Navigation -->
+            <ul>
+                <li class="selected"><a href="#">Home</a>
+                <li ><a href="blog">Blog</a></li>
+                <li><a href="Manager">Manager</a></li>
+                <li><a href="#">Fan Club</a></li>
+                <li class="subscribe">
+                    <div id="transDemo2" style="float:left">
+                        <div class="hover" style="float:left">
+                            <img src=http://www.ashlylorenzana.com/wp-content/uploads/2013/12/12065637851779660844SRD_RSS_Logo.svg_.hi_.png width="30" height="30">
+                        </div>
+                    </div>
+                    <a href="#">Subscribe via. RSS</a>
+
+                </li>
+            </ul>
+        </nav>
+
+
+        <section id="intro" >
+            <!-- Introduction -->
+
+            <header>
+                <h2>Do you have questions for me?</h2>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            <img src="~/Images/MyImages/intro_shauli.png" alt="Shauli" />
+        </section>
+
+
+
+        <div id="content" >
+            <div id="mainContent" style="float:left">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
             </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
+
+            <aside style="float:right">
+                <section>
+                    <header>
+                        <h3>Categories</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor</a></li>
+                        <li><a href="#">Sit amet consectetur</a></li>
+                        <li><a href="#">Adipisicing elit sed</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <header>
+                        <h3>Archives</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">December 2008</a></li>
+                        <li><a href="#">January 2009</a></li>
+                        <li><a href="#">February 2009</a></li>
+                        <li><a href="#">March 2009</a></li>
+                    </ul>
+                </section>
+            </aside>
+
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
+            <!-- Footer -->
+            <div>
+                <section id="about">
+                    <header>
+                        <h3>About</h3>
+                    </header>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la</p>
+                </section>
+                <section id="blogroll">
+                    <header>
+                        <h3>Blogroll</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">NETTUTS+</a></li>
+                        <li><a href="#">FreelanceSwitch</a></li>
+                    </ul>
+                </section>
+                <section id="popular">
+                    <header>
+                        <h3>Popular</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">This is the title of a blog post</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
+                    </ul>
+                </section>
             </div>
+
+            <audio src="~/Music/Background.mp3" controls autoplay="autoplay" loop="loop">
+                <p>If you are reading this, it is because your browser does not support the audio element.</p>
+            </audio>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
