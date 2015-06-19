@@ -7,13 +7,13 @@ namespace MvcApplication1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class bar : IMigrationMetadata
+    public sealed partial class commentsToStirng : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(bar));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(commentsToStirng));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506191508109_bar"; }
+            get { return "201506191633307_commentsToStirng"; }
         }
         
         string IMigrationMetadata.Source
