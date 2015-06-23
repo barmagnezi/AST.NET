@@ -52,7 +52,11 @@ namespace MvcApplication1.Controllers
             if (ModelState.IsValid)
             {
                 post.comments = "comments-";
+                post.date = DateTime.Today.ToString();
+                
+
                 db.Posts.Add(post);
+                db2.SaveChanges();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -14,12 +14,12 @@
         <td>body</td>
         <th></th>
     </tr>
-@if(Model.ToArray().Length==0){
+@if(Model.ToArray().Length==0 || Model==null){
     <tr>
         No comments!!!!!!!
     </tr>
 }else{
-    @foreach (var item in Model) {
+    foreach (var item in Model) {
         <tr>
             <td>@item.id</td>
             <td>@item.author</td>

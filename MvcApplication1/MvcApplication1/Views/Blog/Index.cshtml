@@ -1,137 +1,59 @@
-﻿@model IEnumerable<MvcApplication1.Models.Post>
+﻿@model MvcApplication1.Models.helperBlogController
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index2";
 }
 
-<h2>Index</h2>
+<<h1>The posts:</h1>
 
 
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@foreach (var post in Model)
+@foreach (var item in Model.PostComments)
 {
-    <section>
-        <article class="blogPost">
+    <section style="padding:12px">
+        <article class=" blogpost">
             <header>
-                <h2>@post.title</h2>
-                <p>Posted on (<time datetime="2009-06-29T23:31+01:00">@post.date</time>) 
-                by <a href=@post.urlAuthor>@post.author</a> 
-                - <a href="#Comments">@post.comments</a></p>
+                <h2>@item.post.title</h2>
+                <p>
+                    <h3>Posted on (<time datetime="2009-06-29T23:31+01:00">@item.post.date</time>) by <a href="@item.post.urlAuthor">@item.post.author</a></h3>
+                    <h3>Number of comments:@(item.numberOfCom)</h3>
+                </p>
             </header>
             <div>
-                <p>
-                    @post.body
-                </p>
-
-                <img src=@post.image />
-
+                <p>@item.post.body</p>
+                <img src="@item.post.image" />
                 <video controls="controls">
-                    <source src=@post.video type="video/mp4" />
+                    <source src=@item.post.video type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-
             </div>
         </article>
     </section>
-    foreach(var comment in post.comments){
-           <section id="comments">
-			<h3>Comments</h3>
-				<article>
-					<header>
-						<a href=@comment.ToString().Split("SeniaIsTheMafiaKing")@comment.author</a>
-					</header>
-					<p>@comment.body</p>
-				</article>
-			</section>
+    if (item.comments != null)
+    {
+        <section id="comments">
+            <h3 style="padding-left:25px;padding-top:10px">comments:</h3>
+            <!--all the comments-->
+            @foreach (var comment in item.comments)
+            {
+                <article style="padding-left:30px">
+                    <header>
+                        @comment.title  by:<a href="@comment.urlAuthor">@comment.author</a>
+                    </header>
+                    <p>@comment.body</p>
+                </article>
+            }
+        </section>
     }
-
-        <form action=Html.ActionLink("Add", "AddComment", @come, PostEmail, = item.postId, PostWebsite= website, comment = commneet.text }) method="post">
-        <h3>Post a comment</h3>
-        <p>
-            <label for="name">Name</label>
-            <input name="name" id="name" type="text" required />
-        </p>
-        <p>
-            <label for="email">E-mail</label>
-            <input name="email" id="email" type="email" required />
-        </p>
-        <p>
-            <label for="website">Website</label>
-            <input name="website" id="website" type="url" />
-        </p>
-        <p>
-            <label for="comment">Comment</label>
-            <textarea name="comment" id="comment" required></textarea>
-        </p>
-        <p><input type="submit" value="Post comment" /></p>
+    <form action="Blog/addComment" style="padding-left:25px;padding-top:10px" id=" comments">
+        <h3>Add comment:</h3><br>
+        author: <input type="text" name="author"><br>
+        urlAuthor: <input type="text" name="urlAuthor"><br>
+        title: <input type="text" name="title"><br>
+        body: <input type="text" name="body"><br>
+        postId: <input type="text" name="postId" value="@item.post.id" readonly><br>
+        <input type="submit" value="Submit">
     </form>
-
-
-}
-    
-
-<!--
-    <table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.urlAuthor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.video)
-        </th>
-        <th></th>
-    </tr>
--->
-    <!--
-        
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.urlAuthor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.video)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
 }
 
-</table>
-        -->
+
+
