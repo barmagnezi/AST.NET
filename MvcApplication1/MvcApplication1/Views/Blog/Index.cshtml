@@ -28,21 +28,20 @@
             </div>
         </article>
     </section>
-    if (item.comments != null)
-    {
-        <section id="comments">
+    foreach(var comment in post.comments){
+           <section id="comments">
             <h3 style="padding-left:25px;padding-top:10px">comments:</h3>
             <!--all the comments-->
             @foreach (var comment in item.comments)
             {
                 <article style="padding-left:30px">
-                    <header>
+					<header>
                         @comment.title  by:<a href="@comment.urlAuthor">@comment.author</a>
-                    </header>
-                    <p>@comment.body</p>
-                </article>
+					</header>
+					<p>@comment.body</p>
+				</article>
             }
-        </section>
+			</section>
     }
     <form action="Blog/addComment" style="padding-left:25px;padding-top:10px" id=" comments">
         <h3>Add comment:</h3><br>
@@ -54,6 +53,6 @@
         <input type="submit" value="Submit">
     </form>
 }
-
-
+    
+        
 
