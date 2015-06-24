@@ -36,7 +36,8 @@
             </div>
         </article>
     </section>
-    foreach(var comment in item.comments){
+    if (item.comments != null){
+            foreach(var comment in item.comments){
            <section id="comments">
             <h3 style="padding-left:25px;padding-top:10px">comments:</h3>
             <!--all the comments-->
@@ -49,6 +50,7 @@
 				</article>
 
 			</section>
+    }
     }
     <form action="Blog/addComment" style="padding-left:25px;padding-top:10px" id=" comments">
         <h3>Add comment:</h3><br>
