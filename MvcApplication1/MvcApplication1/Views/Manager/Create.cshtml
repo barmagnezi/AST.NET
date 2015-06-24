@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "Create";
+    var cbox1 = Request["cbox1"];
 }
 
 <h2>Create</h2>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -37,9 +39,9 @@
             @Html.ValidationMessageFor(model => model.urlAuthor)
         </div>
 
-        <div class="editor-label">
+        <!--<div class="editor-label">
             @Html.LabelFor(model => model.date)
-        </div>
+        </div>-->
 
         <div class="editor-label">
             @Html.LabelFor(model => model.body)
@@ -49,26 +51,32 @@
             @Html.ValidationMessageFor(model => model.body)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.image)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.image)
-            @Html.ValidationMessageFor(model => model.image)
-        </div>
+        <form method="post" action="">
+        </form>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.image)
+            </div>
+        <input type="checkbox" onclick="var input = document.getElementById('image'); if (this.checked) { input.disabled = false; input.focus(); } else { input.disabled = true; input.value = '' }" />
+        <input id="image" name="image" disabled="disabled" />
+            <div class="editor-field">
+                <!--@Html.EditorFor(model => model.image)-->
+                @Html.ValidationMessageFor(model => model.image)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.video)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.video)
-            @Html.ValidationMessageFor(model => model.video)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.video)
+            </div>
+        <input type="checkbox" onclick="var input = document.getElementById('video'); if (this.checked) { input.disabled = false; input.focus(); } else { input.disabled = true; input.value = '' }" />
+        <input id="video" name="video" disabled="disabled" />
+            <div class="editor-field">
+                <!--@Html.EditorFor(model => model.video)-->
+                @Html.ValidationMessageFor(model => model.video)
+            </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+</fieldset>
 }
 
 <div>
