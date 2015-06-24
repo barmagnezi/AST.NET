@@ -53,10 +53,6 @@ namespace MvcApplication1.Controllers
             {
                 post.comments = "comments-";
                 post.date = DateTime.Today.ToString();
-                if (post.image.Equals(""))
-                    post.image = null;
-                if (post.video.Equals(""))
-                    post.video = null;
                 db.Posts.Add(post);
                 db2.SaveChanges();
                 db.SaveChanges();
