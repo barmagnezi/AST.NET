@@ -20,11 +20,19 @@
             </header>
             <div>
                 <p>@item.post.body</p>
-                <img src="@item.post.image" />
-                <video controls="controls">
-                    <source src=@item.post.video type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                @if (@item.post.image != null)
+                {
+                     <img src="@item.post.image" />
+                }
+               
+                @if (@item.post.video != null)
+                {
+                    <video controls="controls">
+                                <source src=@item.post.video type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                }
+                
             </div>
         </article>
     </section>
